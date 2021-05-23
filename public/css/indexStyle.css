@@ -12,6 +12,13 @@ body {
     font-size: 2.0em;
 }
 
+#welcome {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-style: italic;
+}
+
 #content {
     text-align: center;
     margin: 0 auto;
