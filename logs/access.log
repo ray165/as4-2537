@@ -352,3 +352,5 @@ http://localhost:8000/ /chatRoom Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 >>>>>>> eb2f98f6a6b06671e79c49747d106c6c007a129e
 >>>>>>> 3d3ddd00b5b9d57505c2988d27bcb86229399a20
 >>>>>>> c9bb1d6316f64b3cd1bb17fecb14a27dcf9a342b
+- / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+http://localhost:8000/ /chatRoom Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
