@@ -3,6 +3,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "http": "*",
+    "jquery": "^3.6.0",
     "jsdom": "^16.5.3",
     "morgan": "^1.10.0",
     "rotating-file-stream": "^2.1.5",
