@@ -8,12 +8,10 @@ const { JSDOM } = require("jsdom");
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
-
 app.use("/images", express.static("public/images"));
 app.use("/js", express.static("public/js"));
+app.use("/css", express.static("public/css"));
 
-
-let url = mongodb+srv://wecycle-vancouver.2hson.mongodb.net/chatLogs?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority
 
 
 const accessLogStream = rfs.createStream("access.log", {
@@ -28,7 +26,6 @@ app.use(morgan(":referrer :url :user-agent", { stream: accessLogStream }));
 
 app.get("/", function (req, res) {
   let doc = fs.readFileSync("./public/connect.html", "utf8");
-
 
   res.send(doc);
 });
