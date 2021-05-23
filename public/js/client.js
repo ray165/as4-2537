@@ -89,7 +89,7 @@ $(document).ready(function () {
     let me = $("#name").val();
     let beginTag = "<p>";
     if (me == data.user) {
-      beginTag = "<p style='color: darkblue;'>";
+      beginTag = "<p style='color: black; font-size: 0.5em'>";
     }
     if (data.event) {
       $("#chat_content").append(

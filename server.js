@@ -42,6 +42,7 @@ db.once("open", function () {
 
 app.use("/images", express.static("public/images"));
 app.use("/js", express.static("public/js"));
+app.use("/css", express.static("public/css"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 

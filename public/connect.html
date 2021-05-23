@@ -4,21 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>connect</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Connection Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/connectStyles.css">
+    
+
 </head>
 <body>
-    <div class="input-group mb-3">
-        <button class="btn btn-primary" type="button" id="submit">Connect to the chatroom</button>
-        <input type="text" class="form-control" placeholder="Enter your username" aria-label="Example text with button addon"
-            aria-describedby="button-addon1" id="username">
-        <input type="text" class="form-control" placeholder="Enter the session password! [pw: arron]" aria-label="Example text with button addon"
-            aria-describedby="button-addon1" id="password"> 
-    </div>
-    <p id="warning"></p>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form>
+          <div class="user-box">
+            <input class="usernameInput" type="text" id="username" placeholder="">
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input class="passwordInput"  type="password" id="password" placeholder="Password is arron">
+            <label>Password</label>
+          </div>
+         <button type="button" id="submit"> 
+            Connect to the chatroom
+         </button>
+        </form>
+      </div>
+      <div>
+        <p id="students-heading">
+            TEAM 15 MEMBERS </br>
+            Jason (Jinseok) Ahn A01259569</br>
+            Johnson Lau A01239870</br>
+            Mazin Marwan A01242132</br>
+            Raymond Wong A01248576</br>
+        </p>
+      </div>
+  
+    <!--------Javascript-------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="/js/connect.js"></script>
 </body>
 </html>
