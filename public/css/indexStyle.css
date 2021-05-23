@@ -3,7 +3,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
 }
 
 #chat_content {
@@ -28,6 +27,7 @@ body {
     font-weight: bold;
     font-size: large;
 }
+
 
 #content {
     text-align: center;
@@ -62,4 +62,23 @@ body {
 
 #message {
     margin-top: 6em;
+}
+
+#buttons {
+    margin-top: 2em;
+}
+
+#msg {
+    border-radius: 25px;
+}
+
+#send {
+    border-radius: 25px;
+    background-color: lightgreen;
+    margin-right: 5.0em;
+}
+
+#getChat {
+    border-radius: 25px;
+    background-color: lightgreen;
 }
