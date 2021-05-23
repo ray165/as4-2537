@@ -12,6 +12,10 @@ const io = require("socket.io")(server);
 app.use("/images", express.static("public/images"));
 app.use("/js", express.static("public/js"));
 
+
+let url = mongodb+srv://wecycle-vancouver.2hson.mongodb.net/chatLogs?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority
+
+
 const accessLogStream = rfs.createStream("access.log", {
   interval: "1d", // rotate daily
   path: path.join(__dirname, "logs"),
@@ -49,7 +53,7 @@ io.on("connect", function (socket) {
 
     console.log("Connected users:", userCount);
   });
-
+ 
   socket.on("chatting", function (data) {
     console.log("User", data.name, "Message", data.message);
 
