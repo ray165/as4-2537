@@ -3,6 +3,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    height: 120%;
+    background-position: center;
 }
 
 #chat_content {
@@ -12,14 +14,11 @@ body {
     font-size: 2.0em;
 }
 
+
 #content {
     text-align: center;
     margin: 0 auto;
     display: block;
-}
-
-#name {
-    font-size: 0.3em;
 }
 
 #students-heading{ 
@@ -29,4 +28,23 @@ body {
 
 #message {
     margin-top: 6em;
+}
+
+#buttons {
+    margin-top: 2em;
+}
+
+#msg {
+    border-radius: 25px;
+}
+
+#send {
+    border-radius: 25px;
+    background-color: lightgreen;
+    margin-right: 5.0em;
+}
+
+#getChat {
+    border-radius: 25px;
+    background-color: lightgreen;
 }
