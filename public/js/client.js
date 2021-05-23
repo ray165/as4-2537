@@ -1,5 +1,26 @@
+"use strict";
+
+function saveMsg(myData) {
+    console.log(myData);
+  fetch('/save', {
+      method: 'POST', // or 'PUT'
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(myData),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
+}
+
+
 $(document).ready(function () {
-  "use strict";
+
   document.querySelector("#name").value = localStorage.getItem("name");
 
   /* This happens when the document is loaded. We start off with http://localhost:8000
@@ -7,6 +28,8 @@ $(document).ready(function () {
        ws://localhost:8000
      */
   let socket = io();
+
+  
 
   socket.on("user_joined", function (data) {
     let beginTag = "<p style='color: black;'>";
@@ -73,6 +96,9 @@ $(document).ready(function () {
         "<p style='color: orange;'>" + data.event + "</p>"
       );
     }
+
+
+
     $("#chat_content").append(
       beginTag + data.user + " said: " + data.text + "</p>"
     );
@@ -92,6 +118,33 @@ $(document).ready(function () {
       return;
     }
     socket.emit("chatting", { name: name, message: text });
+    
+    console.log(name, text);
+    let myData = {
+        _name: name || "testUser",
+        msg: text,
+    };
+
+    saveMsg(myData);
     $("#msg").val("");
   });
+
+  $("#getChat").on("click", function() {
+    $.ajax({
+        url: "/getChatLog",
+        type: "get",
+        success: function(data) {
+            console.log("Success: ", data);
+            for (let i = 0; i < data.length; i++){
+                let str =  `<p> date: ${data[i].postDate} author: ${data[i].authorName}  message ${data[i].message} </p>`;
+                $("#chatLogs").append(str);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error:", jqXHR, textStatus, errorThrown);
+        },
+    });
+  })
+  
+
 });
