@@ -97,6 +97,10 @@ app.get("/getChatLog", function(req, res) {
     getData().catch((err) => console.error(err));
 })
 
+app.get("/disconnect", function(req,res) {
+    socket.disconnect()
+})
+
 var userCount = 0;
 
 io.on("connect", function (socket) {

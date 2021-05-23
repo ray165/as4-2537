@@ -1,26 +1,24 @@
 "use strict";
 
 function saveMsg(myData) {
-    console.log(myData);
-  fetch('/save', {
-      method: 'POST', // or 'PUT'
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(myData),
+  console.log(myData);
+  fetch("/save", {
+    method: "POST", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(myData),
   })
-  .then(response => response.json())
-  .then(data => {
-      console.log('Success:', data);
-  })
-  .catch((error) => {
-      console.error('Error:', error);
-  });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
-
 $(document).ready(function () {
-
   document.querySelector("#name").value = localStorage.getItem("name");
 
   /* This happens when the document is loaded. We start off with http://localhost:8000
@@ -29,10 +27,8 @@ $(document).ready(function () {
      */
   let socket = io();
 
-  
-
   socket.on("user_joined", function (data) {
-    let beginTag = "<p style='color: black;'>";
+    let beginTag = "<h1 style='color: black;'>";
     let numOfUsers = data.numOfUsers;
     let userStr = "";
     if (numOfUsers == 1) {
@@ -41,18 +37,19 @@ $(document).ready(function () {
       userStr = "users";
     }
     if (numOfUsers < 2) {
-      $("#chat_content").append("<p>Welcome " + data.user + "</p>");
+      $("#welcome").append("<h1>Welcome " + localStorage.getItem("name") + "</h1>");
     } else {
-      $("#chat_content").append(
+      $("#welcome").append(
         beginTag +
-          data.user +
+        localStorage.getItem("name") +
           " connected. There are " +
           numOfUsers +
           " " +
           userStr +
-          ".</p>"
+          ".</h1>"
       );
     }
+
   });
 
   socket.on("user_left", function (data) {
@@ -83,6 +80,11 @@ $(document).ready(function () {
     }
   });
 
+  socket.on("end", function () {
+    console.log("user has disconnected");
+    socket.disconnect();
+  });
+
   // this is from others - not our text
   socket.on("chatting", function (data) {
     //console.log(data);
@@ -97,11 +99,15 @@ $(document).ready(function () {
       );
     }
 
-
-
     $("#chat_content").append(
       beginTag + data.user + " said: " + data.text + "</p>"
     );
+  });
+
+  $("#logout").on("click", function () {
+    socket.disconnect();
+    console.log("you are disconnected");
+    window.location.href = "/";
   });
 
   $("#send").click(function () {
@@ -118,33 +124,31 @@ $(document).ready(function () {
       return;
     }
     socket.emit("chatting", { name: name, message: text });
-    
+
     console.log(name, text);
     let myData = {
-        _name: name || "testUser",
-        msg: text,
+      _name: name || "testUser",
+      msg: text,
     };
 
     saveMsg(myData);
     $("#msg").val("");
   });
 
-  $("#getChat").on("click", function() {
+  $("#getChat").on("click", function () {
     $.ajax({
-        url: "/getChatLog",
-        type: "get",
-        success: function(data) {
-            console.log("Success: ", data);
-            for (let i = 0; i < data.length; i++){
-                let str =  `<p> date: ${data[i].postDate} author: ${data[i].authorName}  message ${data[i].message} </p>`;
-                $("#chatLogs").append(str);
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Error:", jqXHR, textStatus, errorThrown);
-        },
+      url: "/getChatLog",
+      type: "get",
+      success: function (data) {
+        console.log("Success: ", data);
+        for (let i = 0; i < data.length; i++) {
+          let str = `<p> date: ${data[i].postDate} author: ${data[i].authorName}  message ${data[i].message} </p>`;
+          $("#chatLogs").append(str);
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log("Error:", jqXHR, textStatus, errorThrown);
+      },
     });
-  })
-  
-
+  });
 });

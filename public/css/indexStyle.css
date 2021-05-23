@@ -3,13 +3,30 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
 }
 
 #chat_content {
     text-align: center;
-    margin-top: 3em;
-    font-weight: bold;
     font-size: 2.0em;
+    height: 50vh;
+    margin-right: 4vh;
+    margin-left: 4vh;
+    border: 2px solid black;
+    background-color: antiquewhite;
+}
+
+#chatLogs {
+    text-align: center;
+    font-size: 2.0em;
+    border: 2px solid black;
+    background-color: antiquewhite;
+}
+
+#welcome {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
 }
 
 #content {
@@ -18,8 +35,24 @@ body {
     display: block;
 }
 
+#send {
+    border-radius: 25px;
+    background-color: lightgreen;
+}
+
+#getChat {
+    border-radius: 25px;
+    background-color: lightgreen;
+}
+
+#logout {
+    border-radius: 25px;
+    background-color: lightgreen;
+}
+
 #name {
     font-size: 0.3em;
+    font-weight: bold;
 }
 
 #students-heading{ 

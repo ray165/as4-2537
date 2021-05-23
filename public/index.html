@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div id="welcome"></div>
     <div id="chat_content"></div>
     <div id="content">
         <form id="chat_form">
@@ -20,13 +21,14 @@
                 <textarea id="msg" placeholder="Type Any Messages" rows = "5" cols = "40"></textarea>
             </div>
             <input type="button" id="send" value="Send" />
-            <button type="button" id="getChat">Get Chat Logs!</button>
+            <button class="btn-primary"type="button" id="getChat">Get Chat Logs</button>
+            <button class="btn-outline-primary" type="button" id="logout">Log me out</button>
             <div id="chatLogs"></div>
         </form>
     </div>
-
-    <button type="button" id="getChat">Get Chat Logs!</button>
-    <div id="chatLogs"></div>
+    
+    
+    <div id="chatLogs" ></div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
